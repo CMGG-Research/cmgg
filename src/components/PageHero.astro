@@ -4,17 +4,31 @@ interface Props {
   title: string;
   intro: string;
   indexLabel?: string;
+  uniformText?: boolean;
 }
 
-const { eyebrow, title, intro, indexLabel } = Astro.props;
+const { eyebrow, title, intro, indexLabel, uniformText = false } = Astro.props;
 ---
 
 <header class="page-hero">
   <div class="container page-hero__inner">
     <div>
       <p class="eyebrow">{eyebrow}</p>
-      <h1>{title}</h1>
-      <p class="page-hero__intro">{intro}</p>
+      {
+        uniformText ? (
+          <>
+            <h1 class="visually-hidden">{eyebrow}</h1>
+            <p class="page-hero__intro">
+              {title} {intro}
+            </p>
+          </>
+        ) : (
+          <>
+            <h1>{title}</h1>
+            <p class="page-hero__intro">{intro}</p>
+          </>
+        )
+      }
     </div>
     {indexLabel && <p class="page-hero__index">{indexLabel}</p>}
   </div>
