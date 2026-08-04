@@ -1,0 +1,69 @@
+---
+import { site } from '../data/site';
+import { withBase } from '../lib/paths';
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="site-header">
+  <div class="institutional-bar">
+    <div class="container institutional-bar__inner">
+      <span>{site.faculty}</span>
+      <span class="institutional-bar__institution">{site.institution}</span>
+    </div>
+  </div>
+  <div class="container header-main">
+    <a class="brand" href={withBase('/')} aria-label="CMGG home">
+      <span class="brand__mark" aria-hidden="true">CMGG</span>
+      <span class="brand__name">Computational Mathematics <span>&amp; Geodynamics Group</span></span
+      >
+    </a>
+    <nav class="nav-panel nav-panel--desktop" aria-label="Primary navigation">
+      <ul>
+        {
+          site.navigation.map((item) => {
+            const href = withBase(item.path);
+            const active = currentPath === href || currentPath.startsWith(href);
+            return (
+              <li>
+                <a href={href} aria-current={active ? 'page' : undefined}>
+                  {item.label}
+                </a>
+              </li>
+            );
+          })
+        }
+      </ul>
+    </nav>
+    <details class="nav-menu">
+      <summary
+        ><span class="nav-menu__label">Menu</span><span class="nav-menu__icon" aria-hidden="true"
+        ></span></summary
+      >
+      <nav class="nav-panel nav-panel--mobile" aria-label="Mobile navigation">
+        <ul>
+          {
+            site.navigation.map((item) => {
+              const href = withBase(item.path);
+              const active = currentPath === href || currentPath.startsWith(href);
+              return (
+                <li>
+                  <a href={href} aria-current={active ? 'page' : undefined}>
+                    {item.label}
+                  </a>
+                </li>
+              );
+            })
+          }
+        </ul>
+      </nav>
+    </details>
+  </div>
+</header>
+
+<script>
+  const menu = document.querySelector<HTMLDetailsElement>('.nav-menu');
+  menu
+    ?.querySelectorAll('a')
+    .forEach((link) => link.addEventListener('click', () => menu.removeAttribute('open')));
+</script>

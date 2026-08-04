@@ -1,0 +1,125 @@
+---
+import CollaborationCallout from '../components/CollaborationCallout.astro';
+import Hero from '../components/Hero.astro';
+import PersonCard from '../components/PersonCard.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+import ResearchPillarCard from '../components/ResearchPillarCard.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { currentResearchers } from '../data/people';
+import { projects } from '../data/projects';
+import { publications } from '../data/publications';
+import { researchPillars } from '../data/research';
+import { head, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout title={site.tagline} description={site.mission}>
+  <Hero />
+
+  <section class="section section--sand" aria-labelledby="research-heading">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Research themes"
+        title="Mathematics that moves from equations to physical insight."
+        intro="CMGG works across numerical analysis, geophysical fluid dynamics, transport phenomena, and a developing scientific-machine-learning direction."
+      />
+      <div class="pillar-grid" id="research-heading">
+        {researchPillars.map((pillar) => <ResearchPillarCard pillar={pillar} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container feature-split">
+      <div class="feature-copy">
+        <p class="eyebrow">Featured project · Ongoing research</p>
+        <h2>Inside the mantle of a super-Earth.</h2>
+        <p>
+          Current work develops numerical models for compressible mantle convection in cylindrical
+          geometry, including variable viscosity, density and thermal conductivity, buoyancy
+          forcing, and adiabatic compression.
+        </p>
+        <p>
+          The project connects nonlinear PDE modelling with questions about heat transport in
+          terrestrial planets, without disclosing unpublished numerical results.
+        </p>
+        <a class="text-link" href={`${withBase('/projects/')}#mantle-convection`}
+          >Read about the mantle-convection project →</a
+        >
+      </div>
+      <div class="feature-visual" aria-hidden="true">
+        <div class="feature-visual__grid"></div>
+        <div class="feature-visual__orbit"></div>
+        <div class="feature-visual__label">
+          Conceptual domain · compressible convection · cylindrical geometry
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <div class="stat-strip" role="group" aria-label="Research group at a glance">
+        <div class="stat"><strong>4</strong><span>Research pillars</span></div>
+        <div class="stat"><strong>8</strong><span>Peer-reviewed publications</span></div>
+        <div class="stat"><strong>3</strong><span>Current MS researchers</span></div>
+        <div class="stat"><strong>3</strong><span>Completed MS theses</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Research programme"
+        title="Three connected project directions."
+        intro="The programme combines established work in fluid and transport modelling with ongoing geodynamics research and a carefully framed developing direction in scientific machine learning."
+      />
+      <div class="project-grid">
+        {projects.map((project) => <ProjectCard project={project} />)}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Selected publications"
+        title="Peer-reviewed work in nonlinear flow and transport."
+        intro="Recent and representative articles from a publication record of eight peer-reviewed journal papers."
+      />
+      <div class="publication-list">
+        {
+          publications
+            .slice(0, 3)
+            .map((publication, index) => (
+              <PublicationEntry publication={publication} index={index} />
+            ))
+        }
+      </div>
+      <p><a class="text-link" href={withBase('/publications/')}>View all publications →</a></p>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <SectionHeading
+        eyebrow="People"
+        title="Researchers building the group’s geodynamics programme."
+        intro={`Under the supervision of ${head.honorificName}, current MS researchers are developing mantle-convection models and verification studies.`}
+      />
+      <div class="person-grid">
+        {currentResearchers.map((person) => <PersonCard person={person} />)}
+      </div>
+      <p><a class="text-link" href={withBase('/people/')}>Meet the group and alumni →</a></p>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <CollaborationCallout />
+    </div>
+  </section>
+</BaseLayout>

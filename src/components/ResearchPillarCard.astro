@@ -1,0 +1,29 @@
+---
+import type { ResearchPillar } from '../data/research';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  pillar: ResearchPillar;
+  compact?: boolean;
+}
+
+const { pillar, compact = false } = Astro.props;
+---
+
+<article class:list={['pillar-card', { 'pillar-card--compact': compact }]}>
+  <div class="pillar-card__top">
+    <span class="pillar-card__number" aria-hidden="true">{pillar.number}</span>
+    {pillar.status && <span class="status-badge">{pillar.status}</span>}
+  </div>
+  <h3><a href={`${withBase('/research/')}#${pillar.id}`}>{pillar.title}</a></h3>
+  <p>{pillar.summary}</p>
+  {
+    !compact && (
+      <ul class="tag-list" aria-label="Methods">
+        {pillar.methods.slice(0, 3).map((method) => (
+          <li>{method}</li>
+        ))}
+      </ul>
+    )
+  }
+</article>

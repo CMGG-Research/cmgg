@@ -1,0 +1,38 @@
+---
+import { site } from '../data/site';
+import { withBase } from '../lib/paths';
+import SocialLinks from './SocialLinks.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-intro">
+      <a class="footer-mark" href={withBase('/')}>CMGG</a>
+      <p>{site.name}</p>
+      <p class="footer-muted">{site.faculty}<br />{site.institution}<br />{site.location}</p>
+    </div>
+    <div>
+      <h2>Explore</h2>
+      <ul class="footer-links">
+        {
+          site.navigation.slice(0, 6).map((item) => (
+            <li>
+              <a href={withBase(item.path)}>{item.label}</a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h2>Connect</h2>
+      <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+      <SocialLinks compact />
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© {year} Computational Mathematics &amp; Geodynamics Group.</p>
+    <p>Independent academic group website; not an official GIKI institutional website.</p>
+  </div>
+</footer>

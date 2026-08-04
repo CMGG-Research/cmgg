@@ -1,0 +1,38 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import SocialLinks from '../components/SocialLinks.astro';
+import { head, site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Contact"
+  description="Contact Dr. Zahid Ahmed and CMGG at GIKI in Swabi, Pakistan."
+  canonicalPath="/contact/"
+>
+  <Breadcrumbs items={[{ label: 'Contact' }]} />
+  <PageHero
+    eyebrow="Contact"
+    title="Connect with the group."
+    intro="For research, supervision, and collaboration inquiries, use the institutional email below and include enough context for a focused reply."
+    indexLabel="Swabi · Pakistan"
+  />
+
+  <section class="section section--sand">
+    <div class="content-narrow">
+      <article class="contact-card">
+        <p class="eyebrow">Group head &amp; institutional contact</p>
+        <h2>{head.name}</h2>
+        <p>{head.role}</p>
+        <address>
+          {site.faculty}<br />
+          {site.institution}<br />
+          {site.location}
+        </address>
+        <p><a class="button button--primary" href={`mailto:${site.email}`}>{site.email}</a></p>
+        <SocialLinks />
+      </article>
+    </div>
+  </section>
+</BaseLayout>

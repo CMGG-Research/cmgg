@@ -1,0 +1,4 @@
+dist
+node_modules
+public/og.png
+package-lock.json

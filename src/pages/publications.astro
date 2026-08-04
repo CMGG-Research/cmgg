@@ -1,0 +1,74 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import PublicationEntry from '../components/PublicationEntry.astro';
+import { publications } from '../data/publications';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Publications"
+  description="Eight peer-reviewed CMGG publications in nonlinear fluid dynamics, nanofluids, heat transfer, and transport phenomena."
+  canonicalPath="/publications/"
+>
+  <Breadcrumbs items={[{ label: 'Publications' }]} />
+  <PageHero
+    eyebrow="Publications"
+    title="Peer-reviewed work in nonlinear flow and transport."
+    intro="Eight journal articles spanning variable-viscosity flows, nanofluids, MHD systems, heat transfer, porous media, and computational methods. Zahid Ahmed’s name is emphasized in each author list."
+    indexLabel="08 peer-reviewed papers"
+  />
+
+  <section class="section section--white">
+    <div class="container">
+      <div class="filter-bar" role="group" aria-label="Filter publications by research theme">
+        <button type="button" data-filter="all" aria-pressed="true">All publications</button>
+        <button type="button" data-filter="fluid-dynamics" aria-pressed="false"
+          >Fluid dynamics</button
+        >
+        <button type="button" data-filter="transport-phenomena" aria-pressed="false"
+          >Transport phenomena</button
+        >
+      </div>
+      <p class="visually-hidden" id="filter-status" aria-live="polite"></p>
+      <div class="publication-list" id="publications-list">
+        {
+          publications.map((publication, index) => (
+            <PublicationEntry publication={publication} index={index} />
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="content-narrow">
+      <div class="notice">
+        Manuscripts in preparation are listed separately on the Projects page and are not included
+        in the peer-reviewed publication count.
+      </div>
+    </div>
+  </section>
+
+  <script>
+    document.documentElement.classList.add('has-js');
+    const buttons = document.querySelectorAll<HTMLButtonElement>('[data-filter]');
+    const entries = document.querySelectorAll<HTMLElement>('.publication');
+    const status = document.querySelector<HTMLElement>('#filter-status');
+
+    buttons.forEach((button) => {
+      button.addEventListener('click', () => {
+        const filter = button.dataset.filter ?? 'all';
+        buttons.forEach((item) => item.setAttribute('aria-pressed', String(item === button)));
+        let visibleCount = 0;
+        entries.forEach((entry) => {
+          const visible = filter === 'all' || entry.dataset.theme === filter;
+          entry.hidden = !visible;
+          if (visible) visibleCount += 1;
+        });
+        if (status)
+          status.textContent = `${visibleCount} publication${visibleCount === 1 ? '' : 's'} shown.`;
+      });
+    });
+  </script>
+</BaseLayout>

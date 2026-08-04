@@ -1,0 +1,95 @@
+---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { head, site } from '../data/site';
+import { withBase } from '../lib/paths';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description: string;
+  canonicalPath?: string;
+  pageType?: 'website' | 'article';
+}
+
+const { title, description, canonicalPath = '/', pageType = 'website' } = Astro.props;
+const fullTitle = title ? `${title} | ${site.shortName}` : `${site.name} | ${site.shortName}`;
+const canonical = new URL(withBase(canonicalPath), Astro.site);
+const ogImage = new URL(withBase('/og.png'), Astro.site);
+const manifest = withBase('/manifest.webmanifest');
+const favicon = withBase('/favicon.svg');
+const schema = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'ResearchOrganization',
+      '@id': `${new URL(withBase('/'), Astro.site)}#group`,
+      name: site.name,
+      alternateName: site.shortName,
+      url: new URL(withBase('/'), Astro.site),
+      description: site.mission,
+      email: site.email,
+      location: {
+        '@type': 'Place',
+        name: `${site.institution}, ${site.location}`,
+      },
+      parentOrganization: {
+        '@type': 'CollegeOrUniversity',
+        name: site.institution,
+      },
+      founder: { '@id': `${new URL(withBase('/people/'), Astro.site)}#zahid-ahmed` },
+    },
+    {
+      '@type': 'Person',
+      '@id': `${new URL(withBase('/people/'), Astro.site)}#zahid-ahmed`,
+      name: head.name,
+      honorificPrefix: 'Dr.',
+      jobTitle: head.role,
+      email: site.email,
+      affiliation: {
+        '@type': 'CollegeOrUniversity',
+        name: site.institution,
+      },
+      sameAs: site.profiles.map((profile) => profile.href),
+      knowsAbout: head.researchInterests,
+    },
+  ],
+};
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="theme-color" content="#071a2f" />
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" href={favicon} type="image/svg+xml" />
+    <link rel="manifest" href={manifest} />
+    <meta property="og:type" content={pageType} />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="CMGG academic research group social card" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <title>{fullTitle}</title>
+    <script type="application/ld+json" is:inline set:html={JSON.stringify(schema)} />
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <Header />
+    <main id="main-content">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

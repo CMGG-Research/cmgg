@@ -1,0 +1,49 @@
+---
+import type { Publication } from '../data/publications';
+
+interface Props {
+  publication: Publication;
+  index?: number;
+}
+
+const { publication, index } = Astro.props;
+const details = [
+  publication.volume && `vol. ${publication.volume}`,
+  publication.issue && `no. ${publication.issue}`,
+  publication.pages,
+].filter(Boolean);
+---
+
+<article class="publication" data-theme={publication.theme.toLowerCase().replaceAll(' ', '-')}>
+  <div class="publication__year">{publication.year}</div>
+  <div class="publication__body">
+    <p class="publication__authors">
+      {
+        publication.authors.map((author, authorIndex) => (
+          <>
+            {author.includes('Ahmed') ? <strong>{author}</strong> : author}
+            {authorIndex < publication.authors.length - 1 ? ', ' : ''}
+          </>
+        ))
+      }
+    </p>
+    <h3>{publication.title}</h3>
+    <p class="publication__journal">
+      <em>{publication.journal}</em>{details.length ? `, ${details.join(', ')}` : ''}.
+    </p>
+    <div class="publication__meta">
+      <span>{publication.theme}</span>
+      {
+        publication.doi && (
+          <a href={`https://doi.org/${publication.doi}`} target="_blank" rel="noopener noreferrer">
+            DOI: {publication.doi}
+            <span class="visually-hidden">
+              {' '}
+              (article {index ? index + 1 : ''}, opens in a new tab)
+            </span>
+          </a>
+        )
+      }
+    </div>
+  </div>
+</article>

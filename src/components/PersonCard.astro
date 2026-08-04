@@ -1,0 +1,19 @@
+---
+import type { Person } from '../data/people';
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+---
+
+<article class="person-card">
+  <div class="avatar" aria-hidden="true">{person.initials}</div>
+  <div>
+    <p class="person-card__status">{person.status}</p>
+    <h3>{person.name}</h3>
+    <p class="person-card__role">{person.role} · {person.institution}</p>
+    <p class="person-card__research"><span>Research</span>{person.research}</p>
+  </div>
+</article>

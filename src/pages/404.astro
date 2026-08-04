@@ -1,0 +1,19 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { withBase } from '../lib/paths';
+---
+
+<BaseLayout
+  title="Page Not Found"
+  description="The requested CMGG page could not be found."
+  canonicalPath="/404/"
+>
+  <section class="error-page">
+    <div class="content-narrow">
+      <p class="error-page__code">ERROR · 404</p>
+      <h1>This path does not resolve.</h1>
+      <p>The requested page may have moved, or the address may be incomplete.</p>
+      <a class="button button--primary" href={withBase('/')}>Return to the CMGG home page</a>
+    </div>
+  </section>
+</BaseLayout>

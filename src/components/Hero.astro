@@ -1,0 +1,31 @@
+---
+import { head, site } from '../data/site';
+import { withBase } from '../lib/paths';
+---
+
+<section class="hero">
+  <div class="container hero__grid">
+    <div class="hero__content">
+      <p class="hero__kicker"><span>CMGG</span> · Computational research at GIKI</p>
+      <h1>{site.tagline}</h1>
+      <p class="hero__mission">{site.mission}</p>
+      <div class="hero__actions">
+        <a class="button button--primary" href={withBase('/research/')}>Explore our research</a>
+        <a class="button button--ghost" href={withBase('/work-with-us/')}>Collaborate with us</a>
+      </div>
+      <div class="hero__lead">
+        <span class="avatar avatar--small" aria-hidden="true">ZA</span>
+        <p><strong>Led by {head.honorificName}</strong><br />{head.role}</p>
+      </div>
+    </div>
+    <figure class="hero-visual">
+      <img
+        src={withBase('/convection-cells.png')}
+        width="1200"
+        height="900"
+        alt="Idealized temperature field in a half-annular mantle domain, showing four circulating convection cells with alternating warm upwellings and cool downwellings."
+      />
+      <figcaption>Idealized convection-cell field · conceptual visualization</figcaption>
+    </figure>
+  </div>
+</section>

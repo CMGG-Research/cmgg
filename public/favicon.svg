@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="CMGG monogram">
+  <rect width="64" height="64" rx="12" fill="#071a2f"/>
+  <path d="M12 18h40M12 32h40M12 46h40" stroke="#b96a4a" stroke-width="2" opacity=".8"/>
+  <path d="M21 45c-7-6-7-20 0-26 5-4 12-4 17 0l-4 6c-3-2-7-2-9 0-4 3-4 11 0 14 3 2 6 2 9 0l4 6c-5 4-12 4-17 0Z" fill="#f4efe5"/>
+  <path d="M37 23h15v7h-8v5h7v12H40v-6h5v-3h-8Z" fill="#5f9a99"/>
+</svg>

@@ -1,0 +1,81 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CollaborationCallout from '../components/CollaborationCallout.astro';
+import PageHero from '../components/PageHero.astro';
+import { researchPillars } from '../data/research';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Research"
+  description="CMGG research in numerical PDEs, mantle convection, computational fluid dynamics, transport phenomena, and scientific machine learning."
+  canonicalPath="/research/"
+>
+  <Breadcrumbs items={[{ label: 'Research' }]} />
+  <PageHero
+    eyebrow="Research"
+    title="Four ways into complex mathematical systems."
+    intro="Our research begins with nonlinear differential equations and moves through numerical method, computational experiment, model verification, and physical interpretation."
+    indexLabel="04 research pillars"
+  />
+
+  <section class="section section--white">
+    <div class="container detail-stack">
+      {
+        researchPillars.map((pillar) => (
+          <article class="research-detail" id={pillar.id}>
+            <header>
+              <span class="detail-number">Pillar {pillar.number}</span>
+              {pillar.status && <span class="status-badge">{pillar.status}</span>}
+              <h2>{pillar.title}</h2>
+              <p class="detail-lead">{pillar.summary}</p>
+            </header>
+            <div>
+              <p>{pillar.motivation}</p>
+              <div class="detail-columns">
+                <section>
+                  <h3>Representative questions</h3>
+                  <ul>
+                    {pillar.questions.map((question) => (
+                      <li>{question}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Methods</h3>
+                  <ul>
+                    {pillar.methods.map((method) => (
+                      <li>{method}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Applications</h3>
+                  <ul>
+                    {pillar.applications.map((application) => (
+                      <li>{application}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Related work</h3>
+                  <ul>
+                    {pillar.related.map((item) => (
+                      <li>{item}</li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <CollaborationCallout title="A shared model can start a collaboration." />
+    </div>
+  </section>
+</BaseLayout>

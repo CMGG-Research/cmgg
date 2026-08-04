@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  title?: string;
+  text?: string;
+}
+
+const {
+  title = 'Bring a question worth modelling.',
+  text = 'We welcome inquiries from students and researchers whose interests overlap with computational mathematics, geodynamics, CFD, numerical PDEs, or scientific machine learning.',
+} = Astro.props;
+---
+
+<aside class="collaboration-callout" aria-label="Collaboration and research">
+  <div>
+    <p class="eyebrow">Collaboration &amp; research</p>
+    <h2>{title}</h2>
+    <p>{text}</p>
+  </div>
+  <div class="collaboration-callout__actions">
+    <a class="button button--light" href={withBase('/work-with-us/')}>How to work with us</a>
+    <a class="text-link text-link--light" href={`mailto:${site.email}`}>Email {site.email}</a>
+  </div>
+</aside>

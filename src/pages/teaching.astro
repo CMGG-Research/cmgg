@@ -1,0 +1,78 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { graduateCourses, toolkit, undergraduateCourses } from '../data/teaching';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Teaching & Resources"
+  description="CMGG teaching areas, scientific computing methods, and computational toolkit for applied mathematics education."
+  canonicalPath="/teaching/"
+>
+  <Breadcrumbs items={[{ label: 'Teaching & Resources' }]} />
+  <PageHero
+    eyebrow="Teaching & resources"
+    title="Theory becomes useful when students can model with it."
+    intro="Teaching connects conceptual understanding and analytical method with MATLAB, Python, simulation tools, and visualization across mathematics and engineering contexts."
+    indexLabel="Undergraduate · graduate · computational"
+  />
+
+  <section class="section section--white">
+    <div class="container feature-split">
+      <div class="feature-copy">
+        <p class="eyebrow">Teaching philosophy</p>
+        <h2>Move between equation, algorithm, and interpretation.</h2>
+        <p>
+          The teaching approach emphasizes conceptual understanding, mathematical modelling,
+          problem-solving, and computational thinking. Analytical methods are integrated with
+          MATLAB, Python, simulations, and visualization so students can connect mathematical theory
+          with applications in engineering, data science, and technology-oriented problem solving.
+        </p>
+      </div>
+      <div class="content-grid">
+        <section class="content-panel">
+          <h2>Undergraduate areas</h2>
+          <ul>{undergraduateCourses.map((course) => <li>{course}</li>)}</ul>
+        </section>
+        <section class="content-panel">
+          <h2>Graduate &amp; advanced areas</h2>
+          <ul>{graduateCourses.map((course) => <li>{course}</li>)}</ul>
+        </section>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Computational toolkit"
+        title="Methods and tools used across teaching and research."
+        intro="The toolkit supports model development, numerical solution, verification, and communication."
+      />
+      <div class="toolkit-list">
+        {
+          toolkit.map((item) => (
+            <article class="toolkit-card">
+              <>
+                <h3>{item.group}</h3>
+                <p>{item.items.join(' · ')}</p>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="content-narrow">
+      <SectionHeading
+        eyebrow="Resources"
+        title="Prepared for future releases, without empty promises."
+        intro="The site’s content model is ready for future teaching materials, datasets, and software. No downloads are displayed because no public files have yet been supplied."
+      />
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,75 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import PageHero from '../components/PageHero.astro';
+import { site } from '../data/site';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Work With Us"
+  description="Opportunities to contact CMGG about graduate research, visiting research, and collaboration in computational mathematics and geodynamics."
+  canonicalPath="/work-with-us/"
+>
+  <Breadcrumbs items={[{ label: 'Work With Us' }]} />
+  <PageHero
+    eyebrow="Work with us"
+    title="Start with a strong overlap in research interests."
+    intro="We welcome thoughtful inquiries from prospective researchers and collaborators working near CMGG’s research themes."
+    indexLabel="Students · visitors · collaborators"
+  />
+
+  <section class="section section--white">
+    <div class="container feature-split">
+      <div class="feature-copy">
+        <p class="eyebrow">Who should get in touch</p>
+        <h2>Researchers who want to work through hard mathematical models.</h2>
+        <p>
+          Inquiries are welcome from prospective MS and PhD researchers, visiting researchers, and
+          collaborators interested in computational mathematics, geodynamics, CFD, numerical PDEs,
+          transport phenomena, or scientific machine learning.
+        </p>
+        <div class="notice">
+          We welcome inquiries from students and researchers whose interests overlap with the
+          group’s research themes. Expressions of interest do not necessarily indicate the
+          availability of funded positions.
+        </div>
+      </div>
+      <div class="content-panel">
+        <p class="eyebrow">A useful first message</p>
+        <h2>Help us understand the fit.</h2>
+        <ol class="steps">
+          <li><span>A short introduction and the reason you are writing.</span></li>
+          <li><span>Your academic background and relevant preparation.</span></li>
+          <li><span>A focused description of your proposed research interest.</span></li>
+          <li><span>A concise CV attached to your email.</span></li>
+        </ol>
+        <a
+          class="button button--primary"
+          href={`mailto:${site.email}?subject=CMGG%20research%20inquiry`}
+          >Write to Dr. Zahid Ahmed</a
+        >
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--sand">
+    <div class="container content-grid">
+      <article class="content-panel">
+        <p class="eyebrow">Graduate research</p>
+        <h2>MS &amp; PhD inquiries</h2>
+        <p>
+          Prospective researchers should explain how their background and proposed topic connect to
+          the group’s methods or application areas.
+        </p>
+      </article>
+      <article class="content-panel">
+        <p class="eyebrow">Research exchange</p>
+        <h2>Collaborators &amp; visitors</h2>
+        <p>
+          Potential collaborations may begin with a shared modelling question, a verification
+          problem, a numerical method, or an adjacent physical application.
+        </p>
+      </article>
+    </div>
+  </section>
+</BaseLayout>

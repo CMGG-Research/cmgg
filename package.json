@@ -1,0 +1,38 @@
+{
+  "name": "cmgg",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "assets": "node scripts/generate-assets.mjs",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "lint": "eslint . --max-warnings=0",
+    "check": "astro check",
+    "build": "astro build",
+    "preview": "astro preview",
+    "validate:html": "html-validate \"dist/**/*.html\"",
+    "check:links": "node scripts/check-links.mjs",
+    "validate": "npm run format:check && npm run lint && npm run check && npm run build && npm run validate:html && npm run check:links"
+  },
+  "dependencies": {
+    "@astrojs/sitemap": "3.7.3",
+    "astro": "7.1.6"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.10",
+    "eslint": "10.8.0",
+    "eslint-plugin-astro": "3.1.0",
+    "globals": "17.9.0",
+    "html-validate": "11.6.2",
+    "lighthouse": "13.4.1",
+    "prettier": "3.9.6",
+    "prettier-plugin-astro": "0.14.1",
+    "serve": "14.2.6",
+    "sharp": "0.35.3",
+    "typescript": "6.0.2",
+    "typescript-eslint": "8.65.0"
+  }
+}

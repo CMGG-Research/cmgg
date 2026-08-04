@@ -1,0 +1,90 @@
+---
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import CollaborationCallout from '../components/CollaborationCallout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import { manuscripts, projects } from '../data/projects';
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Projects"
+  description="CMGG projects in mantle convection, nanofluid transport, and a developing scientific machine learning direction."
+  canonicalPath="/projects/"
+>
+  <Breadcrumbs items={[{ label: 'Projects' }]} />
+  <PageHero
+    eyebrow="Projects"
+    title="Computational models for planetary and transport systems."
+    intro="Our projects connect mathematical formulation, numerical method, computation, and verification. Ongoing work is described without disclosing unpublished results."
+    indexLabel="03 project directions"
+  />
+
+  <section class="section section--white">
+    <div class="container detail-stack">
+      {
+        projects.map((project) => (
+          <article class="project-detail" id={project.slug}>
+            <header>
+              <span class="detail-number">Project {project.number}</span>
+              <p class="eyebrow">{project.eyebrow}</p>
+              <h2>{project.title}</h2>
+              <p class="detail-lead">{project.summary}</p>
+            </header>
+            <div>
+              {project.description.map((paragraph) => (
+                <p>{paragraph}</p>
+              ))}
+              <div class="detail-columns">
+                <section>
+                  <h3>Methods &amp; tools</h3>
+                  <ul>
+                    {project.methods.map((method) => (
+                      <li>{method}</li>
+                    ))}
+                  </ul>
+                </section>
+                <section>
+                  <h3>Research themes</h3>
+                  <ul>
+                    {project.themes.map((theme) => (
+                      <li>{theme}</li>
+                    ))}
+                  </ul>
+                </section>
+              </div>
+            </div>
+          </article>
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="section section--sand" aria-labelledby="in-progress-title">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Research in progress"
+        title="Manuscripts in preparation"
+        intro="The following titles describe ongoing work. They are not peer-reviewed publications and no publication status is implied."
+      />
+      <div class="content-grid" id="in-progress-title">
+        {
+          manuscripts.map((title, index) => (
+            <article class="content-panel">
+              <>
+                <p class="eyebrow">In preparation · 0{index + 1}</p>
+                <h2>{title}</h2>
+              </>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--white">
+    <div class="container">
+      <CollaborationCallout title="Interested in a neighbouring problem?" />
+    </div>
+  </section>
+</BaseLayout>

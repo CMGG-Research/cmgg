@@ -1,0 +1,20 @@
+---
+import type { Project } from '../data/projects';
+import { withBase } from '../lib/paths';
+
+interface Props {
+  project: Project;
+}
+
+const { project } = Astro.props;
+---
+
+<article class="project-card">
+  <span class="project-card__number" aria-hidden="true">{project.number}</span>
+  <p class="eyebrow">{project.eyebrow}</p>
+  <h3><a href={`${withBase('/projects/')}#${project.slug}`}>{project.title}</a></h3>
+  <p>{project.summary}</p>
+  <ul class="tag-list" aria-label="Project themes">
+    {project.themes.map((theme) => <li>{theme}</li>)}
+  </ul>
+</article>

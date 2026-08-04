@@ -1,0 +1,16 @@
+{
+  "name": "Computational Mathematics & Geodynamics Group",
+  "short_name": "CMGG",
+  "description": "Numerical PDEs, scientific computing, and high-performance simulation of mantle convection and planetary interiors.",
+  "start_url": "/cmgg/",
+  "display": "standalone",
+  "background_color": "#f4efe5",
+  "theme_color": "#071a2f",
+  "icons": [
+    {
+      "src": "/cmgg/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

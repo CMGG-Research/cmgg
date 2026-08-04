@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#071a2f"/>
+  <g fill="none" stroke-linecap="round" transform="translate(90 0)">
+    <path d="M760 526A265 265 0 0 1 1110 176" stroke="#183f60" stroke-width="116"/>
+    <path d="M760 526A265 265 0 0 1 1110 176" stroke="#b96a4a" stroke-width="3"/>
+    <path d="M805 500A215 215 0 0 1 1088 217" stroke="#5f9a99" stroke-width="3"/>
+    <path d="M850 474A163 163 0 0 1 1061 262" stroke="#d2a173" stroke-width="2"/>
+    <path d="M883 450A122 122 0 0 1 1037 297" stroke="#5f9a99" stroke-width="2"/>
+    <path d="M783 438C850 330 950 294 1062 327" stroke="#f4efe5" stroke-width="2" opacity=".45"/>
+    <path d="M820 476C870 382 953 354 1038 373" stroke="#f4efe5" stroke-width="2" opacity=".28"/>
+  </g>
+  <text x="76" y="92" fill="#d2a173" font-family="Arial, sans-serif" font-size="22" font-weight="700" letter-spacing="5">CMGG · GIKI</text>
+  <text x="76" y="176" fill="#f4efe5" font-family="Georgia, serif" font-size="50" font-weight="700">Computational Mathematics for</text>
+  <text x="76" y="236" fill="#f4efe5" font-family="Georgia, serif" font-size="50" font-weight="700">Planetary Mantle</text>
+  <text x="76" y="296" fill="#f4efe5" font-family="Georgia, serif" font-size="50" font-weight="700">Dynamics</text>
+  <text x="76" y="357" fill="#b9ced6" font-family="Arial, sans-serif" font-size="24">Numerical PDEs, scientific computing, and</text>
+  <text x="76" y="391" fill="#b9ced6" font-family="Arial, sans-serif" font-size="24">high-performance simulation of planetary interiors.</text>
+  <line x1="76" y1="448" x2="610" y2="448" stroke="#b96a4a" stroke-width="3"/>
+  <text x="76" y="500" fill="#f4efe5" font-family="Arial, sans-serif" font-size="23">Led by Dr. Zahid Ahmed · Applied Mathematics</text>
+  <text x="76" y="544" fill="#8fb0bd" font-family="Arial, sans-serif" font-size="20">Ghulam Ishaq Khan Institute, Pakistan</text>
+</svg>

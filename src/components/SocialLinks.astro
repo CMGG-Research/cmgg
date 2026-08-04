@@ -1,0 +1,26 @@
+---
+import { site } from '../data/site';
+
+interface Props {
+  compact?: boolean;
+}
+
+const { compact = false } = Astro.props;
+---
+
+<ul
+  class:list={['social-links', { 'social-links--compact': compact }]}
+  aria-label="Academic and professional profiles"
+>
+  {
+    site.profiles.map((profile) => (
+      <li>
+        <a href={profile.href} target="_blank" rel="noopener noreferrer">
+          {profile.label}
+          <span class="visually-hidden"> (opens in a new tab)</span>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </li>
+    ))
+  }
+</ul>
