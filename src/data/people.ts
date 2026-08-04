@@ -9,6 +9,15 @@ export type Person = {
 
 export const currentResearchers: Person[] = [
   {
+    name: 'Adil Hussain',
+    initials: 'AH',
+    role: 'PhD Researcher',
+    institution: 'GIKI',
+    status: '2026 · In progress',
+    research:
+      'Computational and Machine-Learning Approaches to Mantle Dynamics in Planetary Bodies',
+  },
+  {
     name: 'Tamanna Rehman',
     initials: 'TR',
     role: 'MS Researcher',
