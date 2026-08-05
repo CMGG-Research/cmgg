@@ -1,0 +1,90 @@
+name: CMGG content update
+description: Submit verified text, publication, people, project, highlight, or image changes for the website.
+title: '[Content update] '
+labels: []
+assignees: []
+body:
+  - type: dropdown
+    id: content_type
+    attributes:
+      label: Content type
+      description: Choose the part of the website that should be updated.
+      options:
+        - Homepage highlight
+        - Research theme
+        - Current researcher
+        - Alumnus
+        - Peer-reviewed publication
+        - Project or manuscript in preparation
+        - Teaching or resource information
+        - Contact or profile information
+        - Image replacement
+        - Factual correction
+    validations:
+      required: true
+
+  - type: input
+    id: update_title
+    attributes:
+      label: Short update title
+      description: Give the request a concise, specific name.
+      placeholder: Add a verified 2026 publication
+    validations:
+      required: true
+
+  - type: textarea
+    id: approved_copy
+    attributes:
+      label: Exact approved wording and details
+      description: Provide the text, names, dates, author order, research title, status, or other information exactly as it should appear.
+      placeholder: Paste the complete approved wording here.
+    validations:
+      required: true
+
+  - type: textarea
+    id: verification
+    attributes:
+      label: Verification source
+      description: Add a DOI, official publisher or institutional URL, or describe the approved source document. Do not upload the private source CV.
+      placeholder: https://doi.org/...
+    validations:
+      required: true
+
+  - type: input
+    id: destination
+    attributes:
+      label: Intended page or section
+      description: Identify where the update should appear if known.
+      placeholder: Homepage carousel and Publications page
+
+  - type: input
+    id: target_link
+    attributes:
+      label: Link destination
+      description: Provide the internal page, DOI, or official external link that the new content should use.
+      placeholder: https://doi.org/... or /projects/#mantle-convection
+
+  - type: textarea
+    id: image_assets
+    attributes:
+      label: Authorized image assets
+      description: Drag approved images into this field. State the source, permission, intended caption, and whether the image is a conceptual illustration or a research figure.
+      placeholder: Drag files here and add permission and caption details.
+
+  - type: checkboxes
+    id: safeguards
+    attributes:
+      label: Accuracy, privacy, and permission confirmation
+      options:
+        - label: I confirm that the submitted facts, names, dates, publication status, and links are accurate and approved for public use.
+          required: true
+        - label: I confirm that this request does not include a private CV, telephone number, secondary email address, unpublished result, secret, or unnecessary personal information.
+          required: true
+        - label: I confirm that every submitted image is authorized for publication and will not be presented misleadingly as measured data or a published simulation.
+          required: true
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: Additional notes
+      description: Add optional context, deadlines, replacement instructions, or accessibility details.
