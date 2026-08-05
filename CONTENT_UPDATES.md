@@ -132,6 +132,8 @@ Run:
 npm run validate
 ```
 
+For a fast check of structured content, image references, DOI formatting, and privacy safeguards, run `npm run check:content`.
+
 Then verify:
 
 - the changed page on desktop and mobile;
