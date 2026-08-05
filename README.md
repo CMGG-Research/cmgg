@@ -2,7 +2,7 @@
 
 The public website for the Computational Mathematics & Geodynamics Group (CMGG), led by Dr. Zahid Ahmed at the Ghulam Ishaq Khan Institute of Engineering Sciences and Technology in Pakistan.
 
-Live site: <https://zahidahmed121.github.io/cmgg/>
+Live site: <https://cmgg-research.github.io/cmgg/>
 
 ## Technology stack
 
@@ -68,7 +68,7 @@ The workflow in `.github/workflows/deploy.yml` runs on pushes to `main` and on m
 
 The Astro `site` and `base` values are configured for:
 
-`https://zahidahmed121.github.io/cmgg/`
+`https://cmgg-research.github.io/cmgg/`
 
 ## Asset and privacy rules
 

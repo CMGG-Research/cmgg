@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zahidahmed121.github.io/cmgg/sitemap-index.xml
+Sitemap: https://cmgg-research.github.io/cmgg/sitemap-index.xml

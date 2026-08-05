@@ -2,7 +2,7 @@ import sitemap from '@astrojs/sitemap';
 import { defineConfig } from 'astro/config';
 
 export default defineConfig({
-  site: 'https://zahidahmed121.github.io',
+  site: 'https://cmgg-research.github.io',
   base: '/cmgg',
   output: 'static',
   trailingSlash: 'always',

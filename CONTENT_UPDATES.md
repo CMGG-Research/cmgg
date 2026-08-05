@@ -26,7 +26,7 @@ Repository maintainers can make small updates through the GitHub website:
 4. Check spelling, links, dates, and publication status.
 5. Commit the change to `main` with a clear message.
 6. Open the **Actions** tab and wait for the Pages deployment to succeed.
-7. Inspect the changed page at <https://zahidahmed121.github.io/cmgg/>.
+7. Inspect the changed page at <https://cmgg-research.github.io/cmgg/>.
 
 For larger changes, edit locally and run `npm run validate` before pushing.
 
