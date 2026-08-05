@@ -9,6 +9,8 @@ export type ResearchPillar = {
   applications: string[];
   related: string[];
   status?: string;
+  image?: string;
+  imageAlt?: string;
 };
 
 export const researchPillars: ResearchPillar[] = [
@@ -32,6 +34,9 @@ export const researchPillars: ResearchPillar[] = [
     ],
     applications: ['Geophysical flows', 'Boundary layers', 'Heat and mass transfer'],
     related: ['Computational Modelling of Mantle Convection in Super-Earths'],
+    image: '/images/homepage/03-numerical-pde-scientific-computing.webp',
+    imageAlt:
+      'Conceptual scientific-computing visualization with a curved grid, streamlines, and a circular boundary.',
   },
   {
     id: 'geodynamics',
@@ -53,6 +58,9 @@ export const researchPillars: ResearchPillar[] = [
     ],
     applications: ['Terrestrial planets', 'Super-Earths', 'Model verification'],
     related: ['Computational Modelling of Mantle Convection in Super-Earths'],
+    image: '/images/homepage/04-mantle-lithosphere-interaction.webp',
+    imageAlt:
+      'Conceptual cross-section of warm mantle upwelling beneath a separating rocky lithosphere.',
   },
   {
     id: 'transport',
@@ -74,6 +82,9 @@ export const researchPillars: ResearchPillar[] = [
     ],
     applications: ['Nanofluid flow', 'MHD systems', 'Heat and mass transfer'],
     related: ['Numerical Simulation of Nanofluid and Transport Phenomena'],
+    image: '/images/homepage/02-cylindrical-mantle-simulation.webp',
+    imageAlt:
+      'Conceptual annular flow domain with a computational grid, streamlines, and contrasting temperature regions.',
   },
   {
     id: 'scientific-ml',
@@ -96,5 +107,8 @@ export const researchPillars: ResearchPillar[] = [
     applications: ['Differential equations', 'Scientific computing education', 'Research planning'],
     related: ['Machine Learning for Differential Equations and Scientific Computing'],
     status: 'Developing direction',
+    image: '/images/homepage/05-scientific-ml-mantle-dynamics.webp',
+    imageAlt:
+      'Conceptual composition linking a gridded field and a network representation to flow inside a planetary mantle.',
   },
 ];

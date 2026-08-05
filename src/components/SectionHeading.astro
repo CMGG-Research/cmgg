@@ -4,13 +4,14 @@ interface Props {
   title: string;
   intro?: string;
   align?: 'left' | 'center';
+  headingId?: string;
 }
 
-const { eyebrow, title, intro, align = 'left' } = Astro.props;
+const { eyebrow, title, intro, align = 'left', headingId } = Astro.props;
 ---
 
 <header class:list={['section-heading', `section-heading--${align}`]}>
   {eyebrow && <p class="eyebrow">{eyebrow}</p>}
-  <h2>{title}</h2>
+  <h2 id={headingId}>{title}</h2>
   {intro && <p class="section-intro">{intro}</p>}
 </header>
