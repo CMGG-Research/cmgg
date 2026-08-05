@@ -1,4 +1,5 @@
 ---
+import HighlightsCarousel from './HighlightsCarousel.astro';
 import { head, site } from '../data/site';
 import { withBase } from '../lib/paths';
 ---
@@ -18,16 +19,8 @@ import { withBase } from '../lib/paths';
         <p><strong>Led by {head.honorificName}</strong><br />{head.role}</p>
       </div>
     </div>
-    <figure class="hero-visual">
-      <img
-        src={withBase('/convection-cells.png')}
-        width="1200"
-        height="900"
-        alt="Idealized temperature field in a half-annular mantle domain, showing four circulating convection cells with alternating warm upwellings and cool downwellings."
-        fetchpriority="high"
-        decoding="async"
-      />
-      <figcaption>Idealized convection-cell field · conceptual visualization</figcaption>
-    </figure>
+    <div class="hero__visual">
+      <HighlightsCarousel />
+    </div>
   </div>
 </section>

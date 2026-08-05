@@ -98,11 +98,10 @@ function walk(directory) {
 }
 
 report(
-  Number.isInteger(HIGHLIGHT_INTERVAL_MS) &&
-    HIGHLIGHT_INTERVAL_MS >= 4000 &&
-    HIGHLIGHT_INTERVAL_MS <= 15000,
-  'HIGHLIGHT_INTERVAL_MS must be an integer between 4,000 and 15,000 milliseconds.',
+  HIGHLIGHT_INTERVAL_MS === 2000,
+  'HIGHLIGHT_INTERVAL_MS must remain set to 2,000 milliseconds.',
 );
+report(highlights.length === 5, 'The homepage slider must contain exactly five highlights.');
 
 requireUnique(
   highlights.map((highlight) => highlight.id),

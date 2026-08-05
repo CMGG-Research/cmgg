@@ -64,7 +64,7 @@ Add an object to the `highlights` array in `src/data/highlights.ts`:
 
 Use a unique lowercase `id`. Keep the summary short enough to fit comfortably on mobile. Internal links must begin with `/`; the carousel component applies the `/cmgg/` base path automatically.
 
-The automatic rotation interval is controlled by `HIGHLIGHT_INTERVAL_MS` in the same file. It is currently set to 5,000 milliseconds.
+The automatic rotation interval is controlled by `HIGHLIGHT_INTERVAL_MS` in the same file. It is currently set to 2,000 milliseconds.
 
 ## Add a researcher or alumnus
 

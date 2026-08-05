@@ -11,23 +11,9 @@ export type Highlight = {
   linkLabel: string;
 };
 
-export const HIGHLIGHT_INTERVAL_MS = 5000;
+export const HIGHLIGHT_INTERVAL_MS = 2000;
 
 export const highlights: Highlight[] = [
-  {
-    id: 'research-programme',
-    eyebrow: 'Research programme',
-    title: 'Computational Mathematics for Planetary Mantle Dynamics',
-    summary:
-      'Numerical PDEs, scientific computing, and high-performance simulation of mantle convection and planetary interiors.',
-    image: '/convection-cells.png',
-    imageWidth: 1200,
-    imageHeight: 900,
-    imageAlt:
-      'Conceptual temperature field in a half-annular mantle domain with alternating warm upwellings and cool downwellings.',
-    href: '/research/',
-    linkLabel: 'Explore our research',
-  },
   {
     id: 'super-earths',
     eyebrow: 'Featured project',
