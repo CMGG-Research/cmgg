@@ -319,10 +319,11 @@ ol {
 .hero__grid {
   position: relative;
   display: grid;
+  width: min(calc(100% - 2rem), 1320px);
   min-height: 520px;
   align-items: center;
-  grid-template-columns: minmax(0, 1.2fr) minmax(330px, 0.8fr);
-  gap: clamp(2rem, 3.5vw, 3.5rem);
+  grid-template-columns: minmax(0, 1fr) minmax(440px, 1fr);
+  gap: clamp(1.5rem, 2.5vw, 2.5rem);
   padding-block: 2.75rem 2.5rem;
 }
 
@@ -1483,7 +1484,8 @@ ol {
   }
 
   .hero__grid {
-    grid-template-columns: 1.12fr 0.88fr;
+    grid-template-columns: minmax(0, 1fr) minmax(400px, 1fr);
+    gap: 1.5rem;
   }
 }
 
