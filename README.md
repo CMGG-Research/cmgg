@@ -64,7 +64,7 @@ Add an object to `projects` in `src/data/projects.ts`. Keep descriptions evidenc
 
 ## GitHub Pages deployment
 
-The workflow in `.github/workflows/deploy.yml` runs on pushes to `main` and on manual dispatch. It uses the official Astro and GitHub Pages actions to install dependencies from `package-lock.json`, build the static site, upload the Pages artifact, and deploy it to the `github-pages` environment.
+The workflow in `.github/workflows/deploy.yml` runs on pushes to `main` and on manual dispatch. A quality job first runs the complete validation suite with Node.js 24 and a clean `npm ci` installation. After validation succeeds, the workflow uses the official Astro and GitHub Pages actions to build the static site, upload the Pages artifact, and deploy it to the `github-pages` environment.
 
 The Astro `site` and `base` values are configured for:
 
