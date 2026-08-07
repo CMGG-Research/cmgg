@@ -11,7 +11,7 @@ const year = new Date().getFullYear();
     <div class="footer-intro">
       <a class="footer-mark" href={withBase('/')}>CMGG</a>
       <p>{site.name}</p>
-      <p class="footer-muted">{site.faculty}<br />{site.institution}<br />{site.location}</p>
+      <p class="footer-muted">{site.location}</p>
     </div>
     <div>
       <h2>Explore</h2>
@@ -27,12 +27,11 @@ const year = new Date().getFullYear();
     </div>
     <div>
       <h2>Connect</h2>
-      <a class="footer-email" href={`mailto:${site.email}`}>{site.email}</a>
+      <a class="footer-email" href={`mailto:${site.email}`}>Email Dr. Zahid Ahmed</a>
       <SocialLinks compact />
     </div>
   </div>
   <div class="container footer-bottom">
     <p>© {year} Computational Mathematics &amp; Geodynamics Group.</p>
-    <p>Independent academic group website; not an official GIKI institutional website.</p>
   </div>
 </footer>
