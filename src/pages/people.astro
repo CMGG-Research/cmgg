@@ -4,9 +4,7 @@ import CollaborationCallout from '../components/CollaborationCallout.astro';
 import PageHero from '../components/PageHero.astro';
 import PersonCard from '../components/PersonCard.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import SocialLinks from '../components/SocialLinks.astro';
-import { alumni, currentResearchers } from '../data/people';
-import { head, site } from '../data/site';
+import { alumni, currentResearchers, groupHead } from '../data/people';
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
@@ -23,58 +21,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     indexLabel="Group head · researchers · alumni"
   />
 
-  <section class="section section--white" id="zahid-ahmed">
-    <div class="container profile-grid">
-      <aside class="profile-aside" aria-label="Group head summary">
-        <div class="avatar" aria-hidden="true">ZA</div>
-        <p class="eyebrow">Group head</p>
-        <h2>{head.name}</h2>
-        <p class="profile-aside__role">{head.role}</p>
-        <p>{site.faculty}<br />{site.institution}</p>
-        <a href={`mailto:${site.email}`}>{site.email}</a>
-        <SocialLinks compact />
-      </aside>
-      <div class="profile-main">
-        <p class="eyebrow">Biography</p>
-        <h2>Computational mathematics across equations, algorithms, and flows.</h2>
-        <p>{head.bio}</p>
-        <div class="profile-sections">
-          <section>
-            <h3>Research interests</h3>
-            <ul class="plain-list">
-              {head.researchInterests.map((interest) => <li>{interest}</li>)}
-            </ul>
-          </section>
-          <section>
-            <h3>Education</h3>
-            <ul class="timeline-list">
-              {
-                head.education.map((item) => (
-                  <li>
-                    <>
-                      <strong>{item.degree}</strong>
-                      <span>
-                        {item.institution} · {item.years}
-                      </span>
-                    </>
-                  </li>
-                ))
-              }
-            </ul>
-          </section>
-          <section>
-            <h3>Selected technical skills</h3>
-            <ul class="plain-list">{head.skills.map((skill) => <li>{skill}</li>)}</ul>
-          </section>
-          <section>
-            <h3>Academic service</h3>
-            <p>
-              Editorial service includes serving as Editor for the Pakistan Journal of Engineering
-              Technology and Science in 2021. Reviewer service spans journals in applied
-              mathematics, nanomaterials, heat transfer, and fluid mechanics.
-            </p>
-          </section>
-        </div>
+  <section class="section section--white" id="group-head">
+    <div class="container">
+      <SectionHeading
+        eyebrow="Group head"
+        title="Academic leadership in computational mathematics and geodynamics."
+      />
+      <div class="person-grid person-grid--head">
+        <PersonCard person={groupHead} />
       </div>
     </div>
   </section>
@@ -84,9 +38,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <SectionHeading
         eyebrow="Current researchers"
         title="Graduate research in mantle convection and model verification."
-        intro="Researcher profiles are intentionally factual and use initials-based graphics because no authorized photographs or individual biographies were supplied."
+        intro="Temporary local portrait placeholders are used where authorized member photographs have not yet been supplied."
       />
-      <div class="person-grid">
+      <div class="person-grid person-grid--current">
         {currentResearchers.map((person) => <PersonCard person={person} />)}
       </div>
     </div>

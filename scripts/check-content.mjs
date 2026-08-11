@@ -4,7 +4,7 @@ import { extname, join, relative, resolve } from 'node:path';
 import sharp from 'sharp';
 
 import { HIGHLIGHT_INTERVAL_MS, highlights } from '../src/data/highlights.ts';
-import { alumni, collaborators, currentResearchers } from '../src/data/people.ts';
+import { people } from '../src/data/people.ts';
 import { manuscripts, projects } from '../src/data/projects.ts';
 import { publications } from '../src/data/publications.ts';
 import { researchPillars } from '../src/data/research.ts';
@@ -151,20 +151,31 @@ await Promise.all(
   }),
 );
 
-const people = [...currentResearchers, ...alumni, ...collaborators];
 requireUnique(
   people.map((person) => person.name),
   'person name',
 );
-people.forEach((person, index) => {
-  const label = `Person ${index + 1} (${person.name})`;
-  requireText(person.name, `${label} name`);
-  report(/^[A-Z]{1,4}$/.test(person.initials), `${label} initials must contain 1–4 capitals.`);
-  requireText(person.role, `${label} role`);
-  requireText(person.institution, `${label} institution`);
-  requireText(person.status, `${label} status`);
-  requireText(person.research, `${label} research`);
-});
+requireUnique(
+  people.map((person) => person.slug),
+  'person slug',
+);
+await Promise.all(
+  people.map(async (person, index) => {
+    const label = `Person ${index + 1} (${person.name})`;
+    requireText(person.name, `${label} name`);
+    report(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(person.slug), `${label} slug is not URL-safe.`);
+    report(/^[A-Z]{1,4}$/.test(person.initials), `${label} initials must contain 1–4 capitals.`);
+    requireText(person.role, `${label} role`);
+    requireText(person.cardRole, `${label} card role`);
+    requireText(person.category, `${label} category`);
+    if (person.category !== 'Group head') {
+      requireText(person.institution, `${label} institution`);
+      requireText(person.status, `${label} status`);
+      requireText(person.research, `${label} research`);
+    }
+    await checkImage(person.portrait, person.portraitAlt, `${label} portrait`);
+  }),
+);
 
 requireUnique(
   projects.map((project) => project.slug),

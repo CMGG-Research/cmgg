@@ -1,19 +1,31 @@
 ---
 import type { Person } from '../data/people';
+import { withBase } from '../lib/paths';
 
 interface Props {
   person: Person;
 }
 
 const { person } = Astro.props;
+const profilePath = withBase(`/people/${person.slug}/`);
+const cardMeta = [person.institution, person.status].filter(Boolean).join(' · ');
 ---
 
-<article class="person-card">
-  <div class="avatar" aria-hidden="true">{person.initials}</div>
-  <div>
-    <p class="person-card__status">{person.status}</p>
-    <h3>{person.name}</h3>
-    <p class="person-card__role">{person.role} · {person.institution}</p>
-    <p class="person-card__research"><span>Research</span>{person.research}</p>
-  </div>
-</article>
+<a class="person-card" href={profilePath} aria-label={`View ${person.name}'s profile`}>
+  <span class="person-card__portrait">
+    <img
+      src={withBase(person.portrait)}
+      alt={person.portraitAlt}
+      width="800"
+      height="1000"
+      loading="lazy"
+      decoding="async"
+    />
+  </span>
+  <span class="person-card__body">
+    <span class="person-card__category">{person.category}</span>
+    <span class="person-card__name">{person.name}</span>
+    <span class="person-card__role">{person.cardRole}</span>
+    {cardMeta && <span class="person-card__meta">{cardMeta}</span>}
+  </span>
+</a>

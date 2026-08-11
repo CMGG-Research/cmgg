@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" role="img" aria-labelledby="title description">
+  <title id="title">Temporary CMGG member portrait placeholder</title>
+  <desc id="description">A neutral illustrated silhouette for WU</desc>
+  <defs>
+    <linearGradient id="background" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071a2f"/>
+      <stop offset="1" stop-color="#174d73"/>
+    </linearGradient>
+    <linearGradient id="silhouette" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#d9e9e7"/>
+      <stop offset="1" stop-color="#78aaa7"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="1000" fill="url(#background)"/>
+  <circle cx="650" cy="165" r="210" fill="none" stroke="#b96a4a" stroke-opacity=".32" stroke-width="3"/>
+  <circle cx="650" cy="165" r="152" fill="none" stroke="#78aaa7" stroke-opacity=".24" stroke-width="2"/>
+  <path d="M0 790c144-98 294-140 450-128 139 11 256 58 350 140v198H0Z" fill="#061526" fill-opacity=".72"/>
+  <circle cx="400" cy="365" r="155" fill="url(#silhouette)"/>
+  <path d="M165 790c18-153 105-242 235-242s217 89 235 242Z" fill="url(#silhouette)"/>
+  <path d="M244 760c47-59 99-88 156-88s109 29 156 88" fill="none" stroke="#3f7e7c" stroke-width="18"/>
+  <rect x="54" y="56" width="132" height="58" fill="#f4efe5" fill-opacity=".96"/>
+  <text x="120" y="97" fill="#071a2f" font-family="Georgia, serif" font-size="31" font-weight="700" text-anchor="middle">WU</text>
+  <text x="400" y="920" fill="#d9e9e7" font-family="Arial, sans-serif" font-size="22" letter-spacing="5" text-anchor="middle">PORTRAIT PENDING</text>
+</svg>

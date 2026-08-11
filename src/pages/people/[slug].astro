@@ -1,0 +1,166 @@
+---
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import PageHero from '../../components/PageHero.astro';
+import SocialLinks from '../../components/SocialLinks.astro';
+import { people, type Person } from '../../data/people';
+import { head, site } from '../../data/site';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { withBase } from '../../lib/paths';
+
+export function getStaticPaths() {
+  return people.map((person) => ({
+    params: { slug: person.slug },
+    props: { person },
+  }));
+}
+
+interface Props {
+  person: Person;
+}
+
+const { person } = Astro.props;
+const isGroupHead = person.slug === 'zahid-ahmed';
+const displayName = isGroupHead ? head.honorificName : person.name;
+const profileDescription = `${displayName} — ${person.cardRole} at the Computational Mathematics & Geodynamics Group.`;
+---
+
+<BaseLayout
+  title={displayName}
+  description={profileDescription}
+  canonicalPath={`/people/${person.slug}/`}
+  pageType="article"
+>
+  <Breadcrumbs items={[{ label: 'People', path: '/people/' }, { label: displayName }]} />
+  <PageHero
+    eyebrow={person.category}
+    title={displayName}
+    intro={person.cardRole}
+    indexLabel="Member profile"
+  />
+
+  <section class="section section--white">
+    <div class="container">
+      <a class="profile-back" href={withBase('/people/')}>
+        <span aria-hidden="true">←</span>
+        Back to People
+      </a>
+
+      <div class="member-profile">
+        <aside class="member-profile__aside" aria-label={`${displayName} profile summary`}>
+          <figure class="member-profile__portrait">
+            <img
+              src={withBase(person.portrait)}
+              alt={person.portraitAlt}
+              width="800"
+              height="1000"
+              decoding="async"
+            />
+          </figure>
+          <p class="eyebrow">{person.category}</p>
+          <h2>{displayName}</h2>
+          <p class="member-profile__role">{person.cardRole}</p>
+          {
+            isGroupHead ? (
+              <>
+                <p>{head.role}</p>
+                <p>
+                  {site.faculty}
+                  <br />
+                  {site.institution}
+                </p>
+                <a href={`mailto:${site.email}`}>{site.email}</a>
+                <SocialLinks compact />
+              </>
+            ) : (
+              <dl class="member-profile__facts">
+                <div>
+                  <dt>Role</dt>
+                  <dd>{person.role}</dd>
+                </div>
+                {person.institution && (
+                  <div>
+                    <dt>Institution</dt>
+                    <dd>{person.institution}</dd>
+                  </div>
+                )}
+                {person.status && (
+                  <div>
+                    <dt>Status</dt>
+                    <dd>{person.status}</dd>
+                  </div>
+                )}
+              </dl>
+            )
+          }
+        </aside>
+
+        <div class="profile-main">
+          {
+            isGroupHead ? (
+              <>
+                <p class="eyebrow">Biography</p>
+                <h2>Computational mathematics across equations, algorithms, and flows.</h2>
+                <p>{head.bio}</p>
+                <div class="profile-sections">
+                  <section>
+                    <h3>Research interests</h3>
+                    <ul class="plain-list">
+                      {head.researchInterests.map((interest) => (
+                        <li>{interest}</li>
+                      ))}
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Education</h3>
+                    <ul class="timeline-list">
+                      {head.education.map((item) => (
+                        <li>
+                          <strong>{item.degree}</strong>
+                          <span>
+                            {item.institution} · {item.years}
+                          </span>
+                        </li>
+                      ))}
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Selected technical skills</h3>
+                    <ul class="plain-list">
+                      {head.skills.map((skill) => (
+                        <li>{skill}</li>
+                      ))}
+                    </ul>
+                  </section>
+                  <section>
+                    <h3>Academic service</h3>
+                    <p>
+                      Editorial service includes serving as Editor for the Pakistan Journal of
+                      Engineering Technology and Science in 2021. Reviewer service spans journals in
+                      applied mathematics, nanomaterials, heat transfer, and fluid mechanics.
+                    </p>
+                  </section>
+                </div>
+              </>
+            ) : (
+              <>
+                <p class="eyebrow">Member profile</p>
+                <h2>{person.name}</h2>
+                {person.research && (
+                  <section class="member-profile__section">
+                    <h3>Research</h3>
+                    <p>{person.research}</p>
+                  </section>
+                )}
+              </>
+            )
+          }
+        </div>
+      </div>
+
+      <a class="profile-back profile-back--footer" href={withBase('/people/')}>
+        <span aria-hidden="true">←</span>
+        Back to People
+      </a>
+    </div>
+  </section>
+</BaseLayout>
